@@ -2,11 +2,15 @@ import express from "express";
 import fs from "node:fs/promises"
 import { createReadStream } from "node:fs";
 import cors from "cors"
+import path from "node:path";
+
+const _dirname = path.resolve();
+console.log(_dirname);
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('./public'));
+app.use(express.static(_dirname + './public'));
 app.use(cors());
 
 
